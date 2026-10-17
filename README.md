@@ -13,7 +13,3 @@ Projet etudiant d'une maquette de satellite – 2ème année ESE (Électronique 
 Billy est le nom de notre maquette de satellite. Il s'agit d'un système embarqué communicant développé dans le cadre de notre cursus en Génie Électronique et Informatique Industrielle (option ESE). Ce projet a pour objectif de concevoir et de déployer un objet connecté capable de transmettre diverses données issues de capteurs via plusieurs protocoles de communication. Le satellite embarquera également une roue de réaction lui permettant de s'orienter automatiquement vers le Soleil.
 
 ---
-
-## 👥 Équipe
-* **Clément (c-pili)**
-* **Jérémie (JeremiePerrin)**
