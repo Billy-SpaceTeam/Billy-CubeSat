@@ -1,8 +1,0 @@
-# Fichiers de build CLion & CMake
-/build/
-/.idea/
-cmake-build-*/
-
-# Fichiers d'indexation et logs STM32
-.mxproject
-*.log

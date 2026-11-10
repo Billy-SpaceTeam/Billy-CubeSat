@@ -1,0 +1,49 @@
+name: Release Nucleo Firmware
+
+on:
+  push:
+    branches: [ "main", "master" ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    # ----------------------------------------------------------------------
+    # OPTIONNEL : Si votre .bin est généré par PlatformIO pendant le CI
+    # ----------------------------------------------------------------------
+    # - name: Setup Python
+    #   uses: actions/setup-python@v5
+    #   with:
+    #     python-version: '3.x'
+    # - name: Install PlatformIO
+    #   run: pip install platformio
+    # - name: Build Firmware
+    #   run: pio run
+    # ----------------------------------------------------------------------
+
+    - name: Générer un nom de Tag unique
+      id: tag
+      run: |
+        echo "TAG_NAME=v1.0.${{ github.run_number }}" >> $GITHUB_ENV
+
+    - name: Créer la Release GitHub et publier le .bin
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+        name: "Firmware Nucleo Build #${{ github.run_number }}"
+        body: |
+          Mise à jour automatique du firmware Nucleo (.bin).
+          Commit : ${{ github.sha }}
+        draft: false
+        prerelease: false
+        files: |
+          chemin/vers/votre/firmware.bin
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
